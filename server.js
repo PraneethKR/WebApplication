@@ -1,15 +1,19 @@
 const express = require("express")
 require("dotenv").config({path: "./config/data.env"});
 const app = express();
-const customerController=require("./controllers/customerControllers.js")
 const mongoose=require("mongoose");
+
+// Controllers imports
+
+const customerController=require("./controllers/customerControllers.js")
+const propertyController=require("./controllers/propertyControllers.js")
 
 
 app.use(express.json());
 
 app.use("/customers",customerController);
 
-
+app.use("/property,",propertyController);
 
 app.listen(process.env.PORT,async()=>
 {

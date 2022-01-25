@@ -1,0 +1,1 @@
+const customerModel=require("../models/customerModel.js")
