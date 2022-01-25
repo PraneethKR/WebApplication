@@ -1,9 +1,29 @@
+const customerModel=require("../models/customerModel.js")
+
+
 exports.getACustomer = (req,res)=>{
-
-console.log(`this route gives customer with id ${req.params.id}`)
+    customerModel.findById(req.params.id)
+    .then((customers)=>
+    {
+        res.json(customers);
+    })
+    .catch((err)=>
+    {
+        res.json({"ERROR":err})
+    })
 }
-
-
+    
+    
 exports.createACustomer=(req,res)=>{
-console.log(`The request to create is here${req.body}`)
+    const customer=new customerModel(req.body);
+
+    customer.save()
+    .then((newCustomer)=>{
+        res.json({
+            data:newCustomer
+        })
+    })
+    .catch(err=>{
+         console.log(`Error: ${err}`);
+    })
 }
