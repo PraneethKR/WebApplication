@@ -6,13 +6,15 @@ router.get("/",propertyService.getallproperty)
 
 router.get("/types",propertyService.getallpropertytypes)
 
-router.get("/:type",propertyService.getApropertytype)
+router.get("/type/:type",propertyService.getApropertytype)
 
-router.get("/:location",propertyService.getApropertylocation)
+router.get("/location/:location",propertyService.getApropertylocation)
 
-router.get("/:value",propertyService.getApropertyvalue)
+router.get("/value/:value",propertyService.getApropertyvalue)
 
 router.get("/:id",propertyService.getApropertyid)
+
+router.post("/",propertyService.createAProperty)
 
 router.put("/:id",propertyService.updateAproperty)
 

@@ -11,9 +11,10 @@ const propertyController=require("./controllers/propertyControllers.js")
 
 app.use(express.json());
 
+
 app.use("/customers",customerController);
 
-app.use("/property,",propertyController);
+app.use("/property",propertyController);
 
 app.listen(process.env.PORT,async()=>
 {

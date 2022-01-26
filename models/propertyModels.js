@@ -7,7 +7,7 @@ const propertySchema = new Schema({
         type:String,
         required:true
     },
-    "rentalPrice(pernight)":
+    rentalPrice:
     {
         type:Number,
         required:true
@@ -26,6 +26,11 @@ const propertySchema = new Schema({
         type:String,
         required:true
     },
+    value:
+    {
+        type:Boolean,
+        required:true
+    },
     photo:
     {
         type:String
@@ -33,7 +38,7 @@ const propertySchema = new Schema({
 })
 
 propertySchema.add({ houseRules: [{ type:String }] })
-propertySchema.add({ amenities: [{ type:String }] , required:true })
+propertySchema.add({ amenities: [{ type:String,required:true }]})
 
 const property = mongoose.model("property",propertySchema);
 
