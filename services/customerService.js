@@ -18,7 +18,7 @@ exports.getACustomer = (req,res)=>{
     })
     .catch((err)=>
     {
-        res.json({"ERROR":err})
+        res.status(400).json({"ERROR":err})
     })
 }
 
@@ -38,12 +38,12 @@ exports.createACustomer=(req,res)=>{
             })
         })
         .catch(err=>{
-             console.log(`Error: ${err}`);
+             res.status(400).json({Error:err})
         })
     })
     .catch((err)=>
     {
-        console.log(`Error: ${err}`)
+        res.status(400).json({Error: err})
     })
 }
 

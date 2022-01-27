@@ -1,4 +1,5 @@
-const express = require("express")
+const express = require("express");
+const res = require("express/lib/response");
 require("dotenv").config({path: "./config/data.env"});
 const app = express();
 const mongoose=require("mongoose");
@@ -26,6 +27,6 @@ app.listen(process.env.PORT,async()=>
     }
     catch(err)
     {
-        console.log(`ERROR: ${err}`);
+        res.status(404).json({ERROR: err});
     }
 })

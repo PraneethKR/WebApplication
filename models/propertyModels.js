@@ -26,7 +26,7 @@ const propertySchema = new Schema({
         type:String,
         required:true
     },
-    value:
+    bestSeller:
     {
         type:Boolean,
         required:true
