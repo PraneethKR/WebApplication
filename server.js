@@ -17,6 +17,11 @@ app.use("/customers",customerController);
 
 app.use("/property",propertyController);
 
+app.use((req,res)=>
+{
+    res.status(404).json(`No Page Found`)
+})
+
 app.listen(process.env.PORT,async()=>
 {
     console.log(`Server Running on Port: ${process.env.PORT}`);

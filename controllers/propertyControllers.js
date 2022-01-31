@@ -1,23 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const propertyService=require("../services/propertyServices.js")
+const Validation=require("../middleware/validation.js");
+const { validate } = require("../models/customerModel.js");
 
 router.get("/",propertyService.getallproperty)
 
 router.get("/types",propertyService.getallpropertytypes)
 
-router.get("/type/:type",propertyService.getApropertytype)
+router.get("/:id",Validation.validatePropertyid,propertyService.getApropertyid)
 
-router.get("/location/:location",propertyService.getApropertylocation)
+router.post("/",Validation.validateCreateProperty,propertyService.createAProperty)
 
-router.get("/value/:value",propertyService.getApropertyvalue)
+router.put("/:id",Validation.validatePropertyid,propertyService.updateAproperty)
 
-router.get("/:id",propertyService.getApropertyid)
-
-router.post("/",propertyService.createAProperty)
-
-router.put("/:id",propertyService.updateAproperty)
-
-router.delete("/:id",propertyService.deleteAproperty)
+router.delete("/:id",Validation.validatePropertyid,propertyService.deleteAproperty)
 
 module.exports = router;

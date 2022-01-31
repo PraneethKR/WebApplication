@@ -1,6 +1,8 @@
 const customerModel=require("../models/customerModel.js")
 const bcrypt=require("bcrypt")
 
+
+
 // This function is used to get the data from the databse for the given ID
 
 exports.getACustomer = (req,res)=>{
@@ -33,7 +35,7 @@ exports.createACustomer=(req,res)=>{
         const customer=new customerModel(data);
         customer.save()
         .then((newCustomer)=>{
-            res.json({
+            res.status(201).json({
                 data:newCustomer
             })
         })
@@ -43,45 +45,6 @@ exports.createACustomer=(req,res)=>{
     })
     .catch((err)=>
     {
-        res.status(400).json({Error: err})
+        res.json({Error: err})
     })
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Functions that are used for validation */
-
-
-exports.checkdataforcreate=(req,res,next)=>
-{
-    if(req.body.firstName && req.body.lastName)
-    {
-        if(req.body.email && req.body.password)
-        {
-            next();
-        }
-        else
-        {
-           res.json({Errorq: "UserId and password must be entered"})
-        }
-    }
-    else
-    {
-        res.json({Error: "firstName and lastName must be entered"})
-    }
 }

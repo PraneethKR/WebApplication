@@ -2,7 +2,21 @@ const PropertyModel=require("../models/propertyModels.js")
 
 exports.getallproperty=(req,res)=>
 {
-   PropertyModel.find().then((property)=>
+    const queryString={};
+    if(req.query.location)
+    {
+        queryString.location=req.query.location;
+    }
+    if(req.query.bestSeller)
+    {
+        queryString.bestSeller=req.query.bestSeller;
+    }
+    if(req.query.type)
+    {
+        queryString.type = req.query.type
+    }
+
+   PropertyModel.find(queryString).then((property)=>
    {
         if(property.length>0)
         {
@@ -13,7 +27,7 @@ exports.getallproperty=(req,res)=>
         }
         else
         {
-            res.json({Error: "No data found"})
+            res.json({Error: "No data found with given parameter values" })
         }
    })
    .catch((err)=>
@@ -36,70 +50,6 @@ exports.getallpropertytypes=(req,res)=>
         else
         {
             res.json({Error: "No data found"})
-        }
-    })
-    .catch((err)=>
-    {
-        res.status(400).json({Error:err});
-    })
-}
-
-exports.getApropertytype=(req,res)=>
-{
-    PropertyModel.find({type:req.params.type}).then((propertyType)=>
-    {
-        if(propertyType.length > 0)
-        res.json({
-            message: `The Properties with the type ${req.params.type} are:`,
-            data: propertyType
-       })
-       else
-       {
-           res.json({Error:`There is no property with type ${req.params.type}`})
-       }
-    })
-    .catch((err)=>
-    {
-        res.status(400).json({Error:err});
-    })
-}
-
-exports.getApropertylocation=(req,res)=>
-{
-    PropertyModel.find({location:req.params.location}).then((propertyType)=>
-    {
-        if(propertyType.length>0)
-        {        
-            res.json({
-            message: `The Properties with the location ${req.params.location} are:`,
-            data: propertyType
-            })
-        }
-        else
-        {
-            res.json({Error:`There is no property with location ${req.params.location}`})
-        }
-    })
-    .catch((err)=>
-    {
-        res.status(400).json({Error:err});
-    })
-}
-
-exports.getApropertyvalue=(req,res)=>
-{
-    PropertyModel.find({bestSeller:req.params.value}).then((propertyType)=>
-    {
-        if(propertyType.length>0)
-        {
-            res.json({
-            message: `The Properties with the value ${req.params.value} are:`,
-            data: propertyType
-            })
-        }
-        else
-        {
-            res.json({Error:`There is no property with bestseller ${req.params.value}`})   
         }
     })
     .catch((err)=>
@@ -140,7 +90,7 @@ exports.createAProperty=(req,res)=>
     })
     .catch((err)=>
     {
-        res.staus(400).json({Error: err})
+        res.status(400).json({Error: err})
     })
 }
 
@@ -188,37 +138,4 @@ exports.deleteAproperty=(req,res)=>
 }
 
 
-
-
-
-
-
-
-// Validation functions
-
-exports.validateCreateProperty=(req,res,next)=>
-{
-    if(req.body.title && req.body.rentalPrice)
-    {
-        if(req.body.type && req.body.location)
-        {
-            if(req.body.bestSeller && req.body.amenities)
-            {
-                next();
-            }
-            else
-            {
-                res.json({Errorq: "BestSeller and amenities must be entered"})
-            }
-        }
-        else
-        {
-            res.json({Errorq: "type and location must be entered"})
-        }
-    }
-    else
-    {
-        res.json({Errorq: "title and rentalPrice must be entered"})
-    }
-}
 
