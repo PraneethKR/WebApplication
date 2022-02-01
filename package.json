@@ -1,20 +1,17 @@
 {
-  "name": "web422_application",
+  "name": "back_end",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Simple RestFull API that will allow customers to view vacation destination with all the related details and also let the administrator to read,edit,create,delete customers data and vacation property details.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "Praneeth Punreddy",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.2",
-    "mongoose": "^6.1.8"
-  },
-  "devDependencies": {
-    "dotenv": "^14.2.0",
-    "nodemon": "^2.0.15"
+    "mongoose": "^6.1.10"
   }
 }
