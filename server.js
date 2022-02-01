@@ -32,7 +32,7 @@ app.use("/customers", customerController);
 app.use("/property", propertyController);
 
 app.use((req, res) => {
-    res.status(404).json(`No Page Found`)
+    res.status(404).json({message:"No Page Found"})
 })
 
 app.listen(process.env.PORT, async () => {
