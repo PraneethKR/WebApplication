@@ -1,45 +1,45 @@
-const mongoose=require("mongoose");
-const  Schema =mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const propertySchema = new Schema({
     title:
     {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     rentalPrice:
     {
-        type:Number,
-        required:true
+        type: Number,
+        required: true
     },
     description:
     {
-        type:String
+        type: String
     },
     type:
     {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     location:
     {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     bestSeller:
     {
-        type:Boolean,
-        required:true
+        type: Boolean,
+        required: true
     },
     photo:
     {
-        type:String
+        type: String
     }
 })
 
-propertySchema.add({ houseRules: [{ type:String }] })
-propertySchema.add({ amenities: [{ type:String,required:true }]})
+propertySchema.add({ houseRules: [{ type: String }] })
+propertySchema.add({ amenities: [{ type: String, required: true }] })
 
-const property = mongoose.model("property",propertySchema);
+const property = mongoose.model("property", propertySchema);
 
-module.exports=property;
+module.exports = property;

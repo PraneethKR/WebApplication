@@ -1,5 +1,5 @@
-const mongoose=require("mongoose");
-const  Schema =mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const customerSchema = new Schema({
     firstName:
@@ -24,8 +24,8 @@ const customerSchema = new Schema({
     }
 })
 
-customerSchema.add({ phone: [{ type:Number }] })
+customerSchema.add({ phone: [{ type: Number }] })
 
-const customers = mongoose.model('customers',customerSchema);
+const customers = mongoose.model('customers', customerSchema);
 
-module.exports=customers;
+module.exports = customers;

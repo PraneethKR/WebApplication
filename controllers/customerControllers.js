@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const customerService=require("../services/customerService")
-const Validation=require("../middleware/validation.js")
+const customerService = require("../services/customerService")
+const Validation = require("../middleware/validation.js")
 
 // This is a get request with ID parameters
 
-router.get("/:id",customerService.getACustomer)
+router.get("/:id", customerService.getACustomer)
 
 
 // This is a post request to add the data object to the collection
 
-router.post("/",Validation.createcustomerValidation,customerService.createACustomer)
+router.post("/", Validation.createcustomerValidation, customerService.createACustomer)
 
-module.exports=router;
+module.exports = router;
