@@ -14,7 +14,6 @@ Heroku link:
 
 
 const express = require("express");
-const res = require("express/lib/response");
 require("dotenv").config({ path: "./config/data.env" });
 const app = express();
 const mongoose = require("mongoose");
