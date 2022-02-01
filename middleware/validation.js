@@ -102,12 +102,84 @@ exports.validateCreateProperty=(req,res,next)=>
     }    
 }
 
-exports.validateCustomerid=(req,res,next)=>
-{
-     
-}
 
-exports.validatePropertyid=(req,res,next)=>
+exports.validatePutData=(req,res,next)=>
 {
+    const errors = [];
+    if(req.body.title==="")
+    {
+            errors.push({
+            field:"title",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.rentalPrice==="")
+    {
+            errors.push({
+            field:"rentalPrice",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.description==="")
+    {
+            errors.push({
+            field:"description",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.photo==="")
+    {
+            errors.push({
+            field:"photo",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.type==="")
+    {
+            errors.push({
+            field:"type",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.location==="")
+    {
+            errors.push({
+            field:"location",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.bestSeller==="")
+    {
+            errors.push({
+            field:"bestSeller",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.houseRules)
+    {
+            errors.push({
+            field:"houseRules",
+            message:"Field cannot be null"
+        })
+    }
+    if(req.body.amenities)
+    {
+            errors.push({
+            field:"amenities",
+            message:"Field cannot be null"
+        })
+    }
 
+    
+    if(errors.length>0)
+    {
+        res.status(400).json({
+            message:"The following are the errors found in the data",
+            data:errors
+        })
+    }
+    else
+    {
+        next();
+    }        
 }

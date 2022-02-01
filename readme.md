@@ -10,8 +10,7 @@ A Simple RestFull API that will allow customers to view vacation destination wit
 
 #### Get /customers/:id
 
-The above end point is used the view customer details by specifying the primary key of the dataSet. The above endpoint dosen't allow any filters
-
+The above end point is used the view customer details by specifying the primary key of the dataSet.
 #### Post /customer
 
 The above end point creates a customer. You must submit the data in the body of the request in JSON format
@@ -39,6 +38,11 @@ The above end point also allow you to filter propertis by passing any of the bel
 #### Get /property/types
 
 The above end point is used the view property types for all the properties.
+
+#### Get /property/:id
+
+The above end point is used the view property details by specifying the primary key of the dataSet.
+
 
 #### Post /property
 

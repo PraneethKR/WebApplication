@@ -71,12 +71,19 @@ exports.getApropertyid=(req,res)=>
         }
         else
         {
-            res.json({Error:`There is no property with id ${req.params.id}`})
+            res.status(404).json({Error:`There is no property with id ${req.params.id}`})
         }
     })
     .catch((err)=>
     {
-        res.status(400).json({Error:err});
+        if(err.name==="CastError" && err.kind==="ObjectId")
+        {
+            res.status(404).json({message:`No property with id: ${req.params.id} found`})
+        }
+        else
+        {
+            res.status(400).json({"ERROR":err})
+        }
     })
 }
 
@@ -86,7 +93,7 @@ exports.createAProperty=(req,res)=>
 
     property.save().then((property)=>
     {
-        res.json({data: property})
+        res.status(201).json({data: property})
     })
     .catch((err)=>
     {
@@ -106,12 +113,19 @@ exports.updateAproperty=(req,res)=>
         }
         else
         {
-            res.json({Error:`There is no property with id ${req.params.id}`})
+            res.status(404).json({Error:`There is no property with id ${req.params.id}`})
         }
     })
     .catch((err)=>
     {
-        res.status(400).json({Error:err})
+        if(err.name==="CastError" && err.kind==="ObjectId")
+        {
+            res.status(404).json({message:`No property with id: ${req.params.id} found`})
+        }
+        else
+        {
+            res.status(400).json({"ERROR":err})
+        }
     })
 }
 
@@ -122,18 +136,25 @@ exports.deleteAproperty=(req,res)=>
     {   
         if(property)
         {
-            res.json({
+            res.status(404).json({
             message:`The property with id ${req.params.id} has been deleted`
             })
         }
         else
         {
-            res.json({Error:`There is no property with id ${req.params.id}`})
+            res.status(404).json({Error:`There is no property with id ${req.params.id}`})
         }
     })
     .catch((err)=>
     {
-        res.status(400).json({Error:err})
+        if(err.name==="CastError" && err.kind==="ObjectId")
+        {
+            res.status(404).json({message:`No property with id: ${req.params.id} found`})
+        }
+        else
+        {
+            res.status(400).json({"ERROR":err})
+        }
     })
 }
 

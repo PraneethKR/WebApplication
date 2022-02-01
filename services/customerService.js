@@ -15,12 +15,19 @@ exports.getACustomer = (req,res)=>{
         }
         else
         {
-            res.json({message:`No customer with id: ${req.params.id} found`})
+            res.status(404).json({message:`No customer with id: ${req.params.id} found`})
         }
     })
     .catch((err)=>
     {
-        res.status(400).json({"ERROR":err})
+        if(err.name==="CastError" && err.kind==="ObjectId")
+        {
+            res.status(404).json({message:`No customer with id: ${req.params.id} found`})
+        }
+        else
+        {
+            res.status(400).json({"ERROR":err})
+        }
     })
 }
 

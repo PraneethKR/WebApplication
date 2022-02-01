@@ -8,12 +8,12 @@ router.get("/",propertyService.getallproperty)
 
 router.get("/types",propertyService.getallpropertytypes)
 
-router.get("/:id",Validation.validatePropertyid,propertyService.getApropertyid)
+router.get("/:id",propertyService.getApropertyid)
 
 router.post("/",Validation.validateCreateProperty,propertyService.createAProperty)
 
-router.put("/:id",Validation.validatePropertyid,propertyService.updateAproperty)
+router.put("/:id",Validation.validatePutData,propertyService.updateAproperty)
 
-router.delete("/:id",Validation.validatePropertyid,propertyService.deleteAproperty)
+router.delete("/:id",propertyService.deleteAproperty)
 
 module.exports = router;

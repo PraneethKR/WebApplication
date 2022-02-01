@@ -5,7 +5,7 @@ const Validation=require("../middleware/validation.js")
 
 // This is a get request with ID parameters
 
-router.get("/:id",Validation.validateCustomerid,customerService.getACustomer)
+router.get("/:id",customerService.getACustomer)
 
 
 // This is a post request to add the data object to the collection
