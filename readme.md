@@ -33,7 +33,7 @@ The above end point also allow you to filter propertis by passing any of the bel
 | --------- | ---------------------------------------------- |
 | title     | Title of the property                          |
 | location  | Location at which the property is avaialble    |
-| besteller | The boolean value of the property type         |
+| bestSeller | The boolean value of the property type         |
 
 #### Get /property/types
 
