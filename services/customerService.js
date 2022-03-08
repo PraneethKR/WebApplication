@@ -36,7 +36,8 @@ exports.createACustomer = (req, res) => {
         customer.save()
             .then((newCustomer) => {
                 res.status(201).json({
-                    data: newCustomer
+                    data: [{field:"success"}],
+                    message: "The user has been registered"
                 })
             })
             .catch(err => {

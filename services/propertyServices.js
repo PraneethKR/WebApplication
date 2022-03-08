@@ -29,8 +29,20 @@ exports.getallproperty = (req, res) => {
 }
 
 exports.getallpropertytypes = (req, res) => {
-    PropertyModel.find({}, "type").then((propertyTypes) => {
-        if (propertyTypes.length > 0) {
+    PropertyModel.find({},{type:1,photo:1,_id:0}).then((propertyTypes) => {
+        if (propertyTypes.length > 0) 
+		{
+			for(let i=0;i<propertyTypes.length;i++)
+			{
+				for(let j=1;j<propertyTypes.length;j++)
+				{
+					if(propertyTypes[i].type == propertyTypes[j].type)
+					{
+						propertyTypes.splice(j,1);
+                        
+					}
+				}
+            }
             res.json({
                 message: "The PropertyTypes for the properties are as follows",
                 data: propertyTypes

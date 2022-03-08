@@ -63,7 +63,7 @@ exports.validateCreateProperty = (req, res, next) => {
             message: "This is a mandatory field"
         })
     }
-    if (!req.body.bestSeller || req.body.bestSeller === "") {
+    if ((req.body.bestSeller != true && req.body.bestSeller != false) || req.body.bestSeller === "") {
         errors.push({
             field: "bestSeller",
             message: "This is a mandatory field"

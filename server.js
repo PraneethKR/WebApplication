@@ -4,7 +4,8 @@ Name: Praneeth Kumar Reddy Punreddy
 Std No: 130828205
 Subject: Web4222
 Date: 01/02/2022
-Heroku link:
+GitHub link: https://github.com/PraneethKR/WebApplication
+Heroku Link: https://pacific-springs-96106.herokuapp.com/
 
 */
 
@@ -25,7 +26,14 @@ const propertyController = require("./controllers/propertyControllers.js")
 
 
 app.use(express.json());
-
+app.use((req,res,next)=>{
+	res.header("Access-Control-Allow-Origin",'*');
+	res.header("Access-Control-Allow-Meathods",'GET,POST,PUT,DELETE');
+	res.header("Access-Control-Allow-Headers",'content-type');
+	
+	
+	next();
+});
 
 app.use("/customers", customerController);
 
